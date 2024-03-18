@@ -1,11 +1,11 @@
 const { Router } = require('express');
 const { getAllPokemonsHandler, getPokemonByIdHandler, getPokemonByNameHandler } = require('../handlers/handlerPokemons.js')
-const { getPokemonByIdValidate } = require('../middleware/middlewarePokemons.js')
+const { getPokemonByIdValidate, getPokemonByNameValidate } = require('../middleware/middlewarePokemons.js')
 
 const routesPokemons = Router();
 
 //Obtener Pokemon por name
-routesPokemons.get('/name', getPokemonByNameHandler);
+routesPokemons.get('/name', getPokemonByNameValidate, getPokemonByNameHandler);
 
 
 //Obtener Pokemon por id

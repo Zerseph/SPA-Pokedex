@@ -23,7 +23,32 @@ const getPokemonByIdValidate = (req, res, next) => {
     }
 }
 
+const getPokemonByNameValidate = (req, res, next) => {
+    try {
+        const { name } = req.query;
+        if (!name || name.trim().length === 0) {
+            throw new Error('Query parameter "name" is required.');
+        }
+        // Validar los caracteres permitidos en el nombre del Pokémon
+        const allowedCharacters = /^[a-zA-Z0-9\s]*$/;
+        if (!allowedCharacters.test(name)) {
+            throw new Error('Invalid characters in the query parameter "name".');
+        }
+
+        // Verificar si el nombre es una cadena o un número (si es un número, tratarlo como cadena para buscar el id tambien)
+        // if (typeof name !== 'string' && !(typeof name === 'number' && !isNaN(name))) {
+        //     throw new Error('The query parameter "name" must be either a string or a number.');
+        // }
+        
+        next();
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+
+    }
+}
+
 
 module.exports = {
     getPokemonByIdValidate,
+    getPokemonByNameValidate,
 }

@@ -47,8 +47,28 @@ const getPokemonByName = async (req, res, next) => {
     try {
         const { name } = req.query;
 
-        //Buscar pokemons que coincidan con el nombre recibido sin distinguir de minisculas y mayusculas
-        const foundPokemons = await Pokemon.findAll({
+        let foundPokemons;
+
+        //opcion de que busque tambien por id en caso que quiera habilitarla
+        // if (!isNaN(parseInt(name))) {
+        //     // Si el parámetro "name" es un número, busca el Pokémon por su identificador
+        //     foundPokemons = await Pokemon.findAll({
+        //         where: {
+        //             id: parseInt(name)
+        //         },
+        //         include: {
+        //             model: Type,
+        //             attributes: ['name'],
+        //             through: { attributes: [] }
+        //         }
+        //     });
+        // } else {
+        //     debo ingresar aqui el codigo de buscar por name si deseo habilitar esta opcion
+        // }
+
+
+        // Si el parámetro "name" no es un número, busca el Pokémon por su nombre
+        foundPokemons = await Pokemon.findAll({
             where: {
                 name: {
                     [Op.iLike]: `%${name}%`
@@ -61,11 +81,11 @@ const getPokemonByName = async (req, res, next) => {
             }
         });
 
-        //Verificar si se encontraron pokemons
+        // Verificar si se encontraron pokemons
         if (foundPokemons.length === 0) {
-            return res.status(404).json({ mensaje: 'No Pokémon found with the provided name.' });
+            return res.status(404).json({ mensaje: 'No Pokémon found with the provided name or ID.' });
         } else {
-            //retornamos los pokemons encontrandos
+            // Retornamos los pokemons encontrados
             return res.json(foundPokemons)
         }
 
