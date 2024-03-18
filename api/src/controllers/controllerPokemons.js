@@ -1,6 +1,84 @@
 const { Op } = require('sequelize');
 const { Pokemon, Type } = require('../db');
 
+
+//Funcion controladora para crear un nuevo Pokemon
+const createNewPokemon = async (req, res, next) => {
+    try {
+        const { id,
+            name,
+            img,
+            hp,
+            attack,
+            defense,
+            special_attack,
+            special_defense,
+            speed,
+            height,
+            weight,
+            Types } = req.body;
+
+        const allPokemons = await Pokemon.findAll()
+
+        const PokemonExists = allPokemons.some(pokedb => {
+            return pokedb.id === id
+        })
+
+        if (!PokemonExists) {
+
+            // Verificar si la cantidad de tipos es valida (1 o 2 tipos)
+            if (Types.length > 2) {
+                return res.status(400).json({ error: 'A Pokémon can have at most two types.' });
+            }
+
+            const newPokemon = await Pokemon.create({
+                id,
+                name,
+                img,
+                hp,
+                attack,
+                defense,
+                special_attack,
+                special_defense,
+                speed,
+                height,
+                weight
+            });
+
+            //Buscamos el id del tipo en el modelo Types
+            const newType = await Type.findAll({
+                where: {
+                    id: Types,
+                },
+            });
+
+            //Asociar los tipos con el nuevo pokemon
+            await newPokemon.setTypes(newType);
+
+            //Enviar el pokemon como respuesta
+            return res.json(newPokemon);
+        } else {
+            return res.status(400).json({ error: 'The Pokémon already exists.' })
+        }
+
+    } catch (error) {
+        next(error);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Funcion controladora para obtener todos los pokemons
 const getAllPokemons = async (req, res, next) => {
     try {
@@ -94,4 +172,4 @@ const getPokemonByName = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllPokemons, getPokemonById, getPokemonByName };
+module.exports = { getAllPokemons, getPokemonById, getPokemonByName, createNewPokemon };
