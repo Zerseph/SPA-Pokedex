@@ -3,7 +3,7 @@ const axios = require('axios');
 const { Pokemon, Type } = require('../db');
 
 
-// Función extraer pokemon de la api y guardar los datos de cada pokemon en la base de datos
+// CARGAR POKEMONS
 const loadPokemonsInDb = async () => {
   try {
     let totalPokemonsAdded = 0; // contador de Pokémon agregados
@@ -95,11 +95,8 @@ const loadPokemonsInDb = async () => {
   }
 }
 
-
-
-
-
-
+//////////////////////////////////////////////////////////
+//CARGAR TIPOS
 const loadTypesInDb = async () => {
   try {
     let totalTypesAdded = 0;
