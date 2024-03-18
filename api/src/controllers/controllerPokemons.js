@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Pokemon, Type } = require('../db');
 
 //Funcion controladora para obtener todos los pokemons
@@ -41,4 +42,36 @@ const getPokemonById = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllPokemons, getPokemonById };
+//funcion controladora para obtener pokemons por name
+const getPokemonByName = async (req, res, next) => {
+    try {
+        const { name } = req.query;
+
+        //Buscar pokemons que coincidan con el nombre recibido sin distinguir de minisculas y mayusculas
+        const foundPokemons = await Pokemon.findAll({
+            where: {
+                name: {
+                    [Op.iLike]: `%${name}%`
+                }
+            },
+            include: {
+                model: Type,
+                attributes: ['name'],
+                through: { attributes: [] }
+            }
+        });
+
+        //Verificar si se encontraron pokemons
+        if (foundPokemons.length === 0) {
+            return res.status(404).json({ mensaje: 'No Pokémon found with the provided name.' });
+        } else {
+            //retornamos los pokemons encontrandos
+            return res.json(foundPokemons)
+        }
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports = { getAllPokemons, getPokemonById, getPokemonByName };
