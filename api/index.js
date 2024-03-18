@@ -22,9 +22,7 @@ const startServer = async () => {
 
 startServer();
 
-// // Syncing all the models at once.
-// conn.sync({ force: true }).then(() => {
-//   server.listen(3001, () => {
+
 //     console.log("                               ,'\\");
 //     console.log("    _.----.        ____         ,'  _\\   ___    ___     ____");
 //     console.log("_,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.");
@@ -37,11 +35,8 @@ startServer();
 //     console.log("       \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |");
 //     console.log("        \\_.-'       |__|    `-._ |              '-.|     '-.| |   |");
 //     console.log("                                `'                            '-._|");
-//     console.log('Active Pokemon Server listening on port 3001'); // eslint-disable-line no-console
-//     getPokemonPage(initialUrl);
-//     console.log("pokemons cargdos correctamente")
-//   });
-// });
+//
+//
 //                  ."-,.__
 //                  `.     `.  ,
 //               .--'  .._,'"-' `.
