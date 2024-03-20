@@ -1,0 +1,80 @@
+.CardPokemon {
+    background-color: #f4f4f4;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    margin: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 130px;
+    height: 200px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.CardPokemon:hover {
+    box-shadow: 4px 7px 20px 3px rgba(0, 0, 0, 0.9);
+}
+
+.pokemonInfo {
+    text-align: center;
+}
+
+.pokemonImage {
+    max-width: 100%;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.numberId {
+    font-weight: bold;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.parrafoId {
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.namePokemon {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    line-height: 0px;
+}
+
+.types {
+    display: inline-block;
+    margin: 3px;
+    margin-top: 0px;
+    padding: 2px 4px;
+    border-radius: 10px;
+    background-color: #ffcb05;
+    color: #333;
+    font-size: 14px;
+}
+
+.Flipped {
+    transform: rotateY(180deg);
+}
+
+.Front {
+    z-index: 2;
+    backface-visibility: hidden;
+}
+
+.Back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}

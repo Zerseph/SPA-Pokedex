@@ -1,11 +1,12 @@
-body {
+body, html {
+  height: 100%; /* Asegura que el cuerpo y el HTML ocupen toda la altura de la ventana */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("./Components/img/abstract_falling_lines_blue_background.jpg");
+  background: linear-gradient(to bottom, #0a8afa, #b9d9f6); /* Colores degradados azules */
   background-size: cover; /* Ajusta el tamaño del fondo para cubrir completamente el contenedor */
   background-position: center; /* Centra el fondo */
   background-repeat: no-repeat; /* Evita que el fondo se repita */
@@ -15,3 +16,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ 

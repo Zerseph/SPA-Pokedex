@@ -1,5 +1,45 @@
 .containerHome {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: url("../img/IMG2912.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 1500px;
+}
+
+.banner {
+    height: 40px;
+    background: #fa0808 url("../img/pokeapibyzerseph.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin-bottom: 0;
+    border: 1px solid #333;
+}
+
+
+.navBar {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-top: 0;
+    border: 1px solid #333;
+}
+
+.containterCards {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination {
     display: flex;
     justify-content: center;
-    color:rgb(0, 0, 0);
+    margin: 0px;
+    padding: 2px;
 }
