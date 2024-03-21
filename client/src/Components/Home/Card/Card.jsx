@@ -10,19 +10,26 @@ const Card = ({ img, id, name, Types }) => {
         setIsFlipped(!isFlipped);
     };
 
+    const determineClassBack = () => {
+        const background = Types.map(type => `var(--color-${type.name.toLowerCase()})`).join(', ');
+    
+        return { background: Types.length === 1 ? background : `linear-gradient(to bottom, ${background})` };
+    };
+
     return (
-        <li className={`${styleCard.CardPokemon} ${isFlipped ? styleCard.Flipped : ''}`} onClick={handleFlip}>
+        <div style={determineClassBack()} className={`${styleCard.CardPokemon} ${isFlipped ? styleCard.Flipped : ''}`} onClick={handleFlip}>
 
             <div className={`${styleCard.pokemonInfo} ${styleCard.Front}`}>
 
-                <img src={img} alt={name} className={styleCard.pokemonImage} />
+                <img src={img} alt={name} className={`${styleCard.pokemonImage} ${styleCard.pokemonImageWithBorder}`} />
 
                 <p className={styleCard.parrafoId}><span className={styleCard.numberId}>N.º</span> {id}</p>
 
                 <h5 className={styleCard.namePokemon}>{name}</h5>
 
                 {Types.map((type, index) => (
-                    <div key={index} className={styleCard.types}><span>{type.name}</span></div>
+                    <div key={index} className={styleCard.types}>
+                        <span className={styleCard[type.name.toLowerCase()]}>{type.name}</span></div>
                 ))}
 
             </div>
@@ -30,7 +37,7 @@ const Card = ({ img, id, name, Types }) => {
             <div className={`${styleCard.pokemonInfo} ${styleCard.Back}`}>
                 Detalles en la parte posterior
             </div>
-        </li>
+        </div>
     );
 };
 
