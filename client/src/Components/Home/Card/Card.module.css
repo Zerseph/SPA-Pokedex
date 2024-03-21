@@ -70,11 +70,12 @@
 }
 
 .namePokemon {
-    margin-top: 8px;
+    margin-top: 0px;
+    margin-bottom: 8px;
     font-size: 14px;
     color: #333;
     text-align: center;
-    line-height: 1; /* Ajusta el espacio entre líneas */
+    line-height: 2; /* Ajusta el espacio entre líneas */
     text-transform: capitalize;
     overflow: hidden; /* Oculta el texto que sobresale */
     white-space: nowrap; /* Evita el salto de línea */
