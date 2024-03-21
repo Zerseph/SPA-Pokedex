@@ -12,7 +12,7 @@ const loadPokemonsInDb = async () => {
 
     let nextUrl = "https://pokeapi.co/api/v2/pokemon"; // URL inicial para la primera página de resultados
 
-    const defaultImageUrl = "https://i.ibb.co/LQ38Pdc/pokemon-Sin-Img.png";
+    const defaultImageUrl = "https://i.ibb.co/wc03Hzg/pokemon-Sin-Img.png";
 
     //Creamos un bucle para que pase por cada pagina
     while (nextUrl) {
