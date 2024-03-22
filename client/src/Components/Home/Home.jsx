@@ -28,7 +28,17 @@ const Home = () => {
 
             <ul className={styleHome.containterCards}>
                 {currentPokes.length ? (
-                    currentPokes.map(({ id, name, img, Types }) => {
+                    currentPokes.map(({
+                        id,
+                        name,
+                        img,
+                        Types,
+                        hp,
+                        attack,
+                        defense,
+                        special_attack,
+                        special_defense,
+                        speed }) => {
                         return (
                             <Card
                                 key={id}
@@ -36,6 +46,12 @@ const Home = () => {
                                 id={id}
                                 name={name}
                                 Types={Types}
+                                hp={hp}
+                                attack={attack}
+                                defense={defense}
+                                special_attack={special_attack}
+                                special_defense={special_defense}
+                                speed={speed}
                             />
                         );
                     })

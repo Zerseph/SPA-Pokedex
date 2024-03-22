@@ -22,7 +22,6 @@
 }
 
 
-
 .CardPokemon {
     background-color: #f4f4f4;
     border: 3px solid #000000;
@@ -134,98 +133,86 @@
     text-transform: capitalize;
 }
 
-.normal {
-    background-color: var(--color-normal);
-    color: #fff;
+/* Colores de los tipos */
+.normal { background-color: var(--color-normal); color: #fff; }
+.fighting { background-color: var(--color-fighting); color: #fff; }
+.flying { background-color: var(--color-flying); color: #fff; }
+.poison { background-color: var(--color-poison); color: #fff; }
+.ground { background-color: var(--color-ground); color: #fff; }
+.rock { background-color: var(--color-rock); color: #fff; }
+.bug { background-color: var(--color-bug); color: #fff; }
+.ghost { background-color: #735797; color: #fff; }
+.steel { background-color: #b7b7ce; color: #fff; }
+.fire { background-color: #ee8130; color: #fff; padding: 2px 12px; }
+.water { background-color: #6390f0; color: #fff; }
+.grass { background-color: #7ac74c; color: #fff; }
+.electric { background-color: #f7d02c; color: #000; }
+.psychic { background-color: #f95587; color: #fff; }
+.ice { background-color: #96d9d6; color: #000; }
+.dragon { background-color: #6f35fc; color: #fff; }
+.dark { background-color: #705746; color: #fff; }
+.fairy { background-color: #d685ad; color: #fff; }
+.shadow { background-color: #000; color: #fff; }
+
+/* ////////////////////////CODIGO CARD BACK AQUI */
+
+.pokemonInfo2 {
+    text-align: center;
 }
 
-.fighting {
-    background-color: var(--color-fighting);
-    color: #fff;
+
+.Back {
+    z-index: 1;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
 }
 
-.flying {
-    background-color: var(--color-flying);
-    color: #fff;
+.chartCanvas {
+    width: calc(100% - 20px); /* Ajusta el ancho del lienzo del gráfico al 100% menos el doble del relleno */
+    height: calc(100% - 20px); /* Ajusta la altura del lienzo del gráfico al 100% menos el doble del relleno */
+    filter: drop-shadow(0 0 1rem rgb(255, 255, 255));
+    top: 0; /* Coloca el lienzo en la parte superior */
+    left: 0; /* Coloca el lienzo en la parte izquierda */
+    right: 0; /* Coloca el lienzo en la parte derecha */
+    bottom: 0; /* Coloca el lienzo en la parte inferior */
 }
 
-.poison {
-    background-color: var(--color-poison);
-    color: #fff;
+
+/* Estilos para el contenedor del gráfico */
+.ContainerCard {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); /* Desenfoque en el borde inferior */
+    background: linear-gradient(to bottom, #ffffff, #b9d9f6); /* Colores degradados azules */
 }
 
-.ground {
-    background-color: var(--color-ground);
-    color: #fff;
+/* Estilos para el fondo del componente Chart */
+.chartBackground {
+    top: 0;
+    left: 100px;
+    width: 100%;
+    height: 100%;
 }
 
-.rock {
-    background-color: var(--color-rock);
-    color: #fff;
+.chartText {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    color: #ffffff; /* Color del texto */
+    margin-top: 0px; /* Reduce el margen superior */
+    margin-bottom: 0px; /* Reduce el margen inferior */
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); /* Desenfoque en el borde inferior */
 }
 
-.bug {
-    background-color: var(--color-bug);
-    color: #fff;
+.chartText p {
+    margin: 0px; /* Reduce el margen superior e inferior de los párrafos */
 }
 
-.ghost {
-    background-color: #735797;
-    color: #fff;
-}
-
-.steel {
-    background-color: #b7b7ce;
-    color: #fff;
-}
-
-.fire {
-    background-color: #ee8130;
-    color: #fff;
-    padding: 2px 12px;
-}
-
-.water {
-    background-color: #6390f0;
-    color: #fff;
-}
-
-.grass {
-    background-color: #7ac74c;
-    color: #fff;
-}
-
-.electric {
-    background-color: #f7d02c;
-    color: #000;
-}
-
-.psychic {
-    background-color: #f95587;
-    color: #fff;
-}
-
-.ice {
-    background-color: #96d9d6;
-    color: #000;
-}
-
-.dragon {
-    background-color: #6f35fc;
-    color: #fff;
-}
-
-.dark {
-    background-color: #705746;
-    color: #fff;
-}
-
-.fairy {
-    background-color: #d685ad;
-    color: #fff;
-}
-
-.shadow {
-    background-color: #000;
-    color: #fff;
+.titleNameBack {
+    font-size: 12px;
+    text-transform: capitalize;
+    font-weight: bold; /* Aplicar negrita */
 }
